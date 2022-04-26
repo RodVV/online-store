@@ -5,13 +5,12 @@ import Search from './pages/Search';
 export default class App extends Component {
   render() {
     return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={ Search } />
-      </Switch>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={ Search } />
+        </Switch>
+      </BrowserRouter>
 
-    )
+    );
   }
 }
-
