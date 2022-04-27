@@ -1,15 +1,53 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import List from '../components/List';
+import { getProductsFromCategoryAndQuery } from '../services/api';
+import ProductCard from '../components/ProductCard';
+// "Nenhum produto foi encontrado"
 
 export default class Search extends Component {
+  constructor() {
+    super();
+    this.state = {
+      searchInput: '',
+      produtos: [],
+    };
+  }
+
+  handleChange = ({ target: { value } }) => {
+    this.setState({
+      searchInput: value,
+    });
+  }
+
+  handleClick = async () => {
+    const { searchInput } = this.state;
+    const result = await getProductsFromCategoryAndQuery('', searchInput);
+    console.log(result);
+    this.setState({
+      searchInput: '',
+      produtos: result,
+    });
+  }
+
   render() {
+    const { searchInput, produtos } = this.state;
     return (
       <div>
         <input
           type="text"
           placeholder="digite aqui"
+          data-testid="query-input"
+          value={ searchInput }
+          onChange={ this.handleChange }
         />
+        <button
+          data-testid="query-button"
+          type="submit"
+          onClick={ this.handleClick }
+        >
+          Pesquisar
+        </button>
         <p
           data-testid="home-initial-message"
         >
@@ -19,6 +57,15 @@ export default class Search extends Component {
           Carrinho de Compras
         </Link>
         <List />
+        {produtos.map((produto) => (
+          <ProductCard
+            key={ produto.results.id }
+            thumbnail={ produto.results.thumbnail }
+            title={ produto.results.title }
+            id={ produto.results.id }
+            price={ produto.results.price }
+          />
+        ))}
       </div>
     );
   }

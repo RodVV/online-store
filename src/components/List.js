@@ -23,7 +23,7 @@ export default class List extends Component {
 
   render() {
     const { categorias } = this.state;
-    console.log(categorias);
+    // console.log(categorias);
     return (
       <div>
         { categorias.map((categoria) => (
