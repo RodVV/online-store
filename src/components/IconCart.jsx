@@ -4,7 +4,7 @@ class IconCart extends Component {
   render() {
     return (
       <div>
-        
+        qualquer coisa
       </div>
     );
   }
