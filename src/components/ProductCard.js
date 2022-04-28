@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 class ProductCard extends Component {
   render() {
-    const { title, price, thumbnail, id } = this.props;
-    console.log(id);
+    const { title, price, thumbnail } = this.props;
+    // console.log(id);
     return (
       <div data-testid="product">
         <p>{title}</p>
@@ -18,7 +18,6 @@ class ProductCard extends Component {
 ProductCard.propTypes = {
   title: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
 };
 

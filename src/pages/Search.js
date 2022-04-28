@@ -22,7 +22,7 @@ export default class Search extends Component {
   handleClick = async () => {
     const { searchInput } = this.state;
     const result = await getProductsFromCategoryAndQuery('', searchInput);
-    // console.log(result);
+    console.log(result);
     this.setState({
       searchInput: '',
       produtos: result.results,
@@ -58,13 +58,19 @@ export default class Search extends Component {
         <List />
         { produtos.length === 0 && <p>Nenhum produto foi encontrado</p> }
         {produtos.map((produto) => (
-          <ProductCard
+          <Link
             key={ produto.id }
-            thumbnail={ produto.thumbnail }
-            title={ produto.title }
-            id={ produto.id }
-            price={ produto.price }
-          />
+            data-testid="product-detail-link"
+            to={ `/details/${produto.id}` }
+          >
+            <ProductCard
+              key={ produto.id }
+              thumbnail={ produto.thumbnail }
+              title={ produto.title }
+              id={ produto.id }
+              price={ produto.price }
+            />
+          </Link>
         ))}
       </div>
     );
