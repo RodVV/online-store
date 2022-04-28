@@ -29,7 +29,7 @@ export default class List extends Component {
         { categorias.map((categoria) => (
           <Link
             data-testid="category"
-            to="/search"
+            to={ `/category/${categoria.id}` }
             key={ categoria.id }
           >
             { categoria.name }
