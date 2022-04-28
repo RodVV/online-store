@@ -26,7 +26,7 @@ export default class Search extends Component {
     console.log(result);
     this.setState({
       searchInput: '',
-      produtos: result,
+      produtos: result.results,
     });
   }
 
@@ -59,11 +59,11 @@ export default class Search extends Component {
         <List />
         {produtos.map((produto) => (
           <ProductCard
-            key={ produto.results.id }
-            thumbnail={ produto.results.thumbnail }
-            title={ produto.results.title }
-            id={ produto.results.id }
-            price={ produto.results.price }
+            key={ produto.id }
+            thumbnail={ produto.thumbnail }
+            title={ produto.title }
+            id={ produto.id }
+            price={ produto.price }
           />
         ))}
       </div>
