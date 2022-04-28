@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import List from '../components/List';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import ProductCard from '../components/ProductCard';
-// "Nenhum produto foi encontrado"
 
 export default class Search extends Component {
   constructor() {
@@ -23,7 +22,7 @@ export default class Search extends Component {
   handleClick = async () => {
     const { searchInput } = this.state;
     const result = await getProductsFromCategoryAndQuery('', searchInput);
-    console.log(result);
+    // console.log(result);
     this.setState({
       searchInput: '',
       produtos: result.results,
@@ -57,6 +56,7 @@ export default class Search extends Component {
           Carrinho de Compras
         </Link>
         <List />
+        { produtos.length === 0 && <p>Nenhum produto foi encontrado</p> }
         {produtos.map((produto) => (
           <ProductCard
             key={ produto.id }
