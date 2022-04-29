@@ -23,7 +23,7 @@ class Details extends Component {
     const url = `https://api.mercadolibre.com/items/${id}`;
     const response = await fetch(url);
     const dataProd = await response.json();
-    console.log(dataProd);
+    // console.log(dataProd);
     this.setState({
       produto: dataProd,
     });

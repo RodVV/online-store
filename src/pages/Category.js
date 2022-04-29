@@ -28,27 +28,22 @@ export default class Category extends Component {
     });
   };
 
-  addToCart = (objeto) => {
-    // console.log(objeto);
-    this.setState((prevState) => ({
-      cart: [...prevState.cart, objeto],
-    }));
-  }
-
   render() {
     const { produtos } = this.state;
+    const { addToCart } = this.props;
     // console.log(produtos);
     return (
       <div>
+        <Link to="/cart" data-testid="shopping-cart-button">
+          Carrinho de Compras
+        </Link>
         {produtos.map((produto) => (
-          <>
+          <div key={ produto.id }>
             <Link
-              key={ produto.id }
               data-testid="product-detail-link"
               to={ `/details/${produto.id}` }
             >
               <ProductCard
-                key={ produto.id }
                 thumbnail={ produto.thumbnail }
                 title={ produto.title }
                 id={ produto.id }
@@ -58,12 +53,11 @@ export default class Category extends Component {
             <button
               type="button"
               onClick={ () => addToCart(produto) }
-              key={ `btn-${produto.id}` }
               data-testid="product-add-to-cart"
             >
-              add Cart
+              categoria
             </button>
-          </>
+          </div>
         ))}
       </div>
     );
@@ -76,4 +70,5 @@ Category.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
