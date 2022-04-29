@@ -6,14 +6,55 @@ import Category from './pages/Category';
 import Details from './pages/Details';
 
 export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      cart: [],
+    };
+  }
+
+  addToCart = (objeto) => {
+    // console.log(objeto);
+    this.setState((prevState) => ({
+      cart: [...prevState.cart, objeto],
+    }));
+  }
+
   render() {
+    const { cart } = this.state;
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={ Search } />
-          <Route exact path="/cart" component={ Cart } />
-          <Route path="/category/:id" component={ Category } />
-          <Route path="/details/:id" component={ Details } />
+          <Route
+            exact
+            path="/"
+            render={ (props) => (<Search
+              { ...props }
+              cart={ cart }
+              addToCart={ this.addToCart }
+            />) }
+          />
+          <Route
+            exact
+            path="/cart"
+            render={ (props) => <Cart { ...props } cart={ cart } /> }
+          />
+          <Route
+            path="/category/:id"
+            render={ (props) => (<Category
+              { ...props }
+              cart={ cart }
+              addToCart={ this.addToCart }
+            />) }
+          />
+          <Route
+            path="/details/:id"
+            render={ (props) => (<Details
+              { ...props }
+              cart={ cart }
+              addToCart={ this.addToCart }
+            />) }
+          />
         </Switch>
       </BrowserRouter>
 
