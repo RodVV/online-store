@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import List from '../components/List';
 import { getProductsFromCategoryAndQuery } from '../services/api';
@@ -31,16 +32,10 @@ export default class Search extends Component {
     });
   }
 
-  addToCart = (objeto) => {
-    // console.log(objeto);
-    this.setState((prevState) => ({
-      cart: [...prevState.cart, objeto],
-    }));
-  }
-
   render() {
     const { searchInput, produtos, cart } = this.state;
-    // console.log(cart);
+    const { addToCart } = this.props;
+    // console.log(this.props);
     return (
       <div>
         <input
@@ -68,14 +63,12 @@ export default class Search extends Component {
         <List />
         { produtos.length === 0 && <p>Nenhum produto foi encontrado</p> }
         {produtos.map((produto) => (
-          <>
+          <div key={ produto.id }>
             <Link
-              key={ produto.id }
               data-testid="product-detail-link"
               to={ `/details/${produto.id}` }
             >
               <ProductCard
-                key={ produto.id }
                 thumbnail={ produto.thumbnail }
                 title={ produto.title }
                 id={ produto.id }
@@ -84,18 +77,21 @@ export default class Search extends Component {
             </Link>
             <button
               type="button"
-              onClick={ () => this.addToCart(produto) }
-              key={ `btn-${produto.id}` }
+              onClick={ () => addToCart(produto) }
               data-testid="product-add-to-cart"
             >
-              add Cart
+              mudei
             </button>
             <Cart
               itens={ cart }
             />
-          </>
+          </div>
         ))}
       </div>
     );
   }
 }
+
+Search.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+};

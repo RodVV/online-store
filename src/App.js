@@ -4,6 +4,7 @@ import Search from './pages/Search';
 import Cart from './pages/Cart';
 import Category from './pages/Category';
 import Details from './pages/Details';
+import { addStorage } from './services/storage';
 
 export default class App extends Component {
   constructor() {
@@ -13,11 +14,20 @@ export default class App extends Component {
     };
   }
 
+  // componentDidMount() {
+  //   this.setState({
+  //     cart: getStorage(),
+  //   });
+  // }
+
   addToCart = (objeto) => {
     // console.log(objeto);
     this.setState((prevState) => ({
       cart: [...prevState.cart, objeto],
-    }));
+    }), () => {
+      const { cart } = this.state;
+      addStorage(cart);
+    });
   }
 
   render() {
