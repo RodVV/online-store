@@ -28,25 +28,42 @@ export default class Category extends Component {
     });
   };
 
+  addToCart = (objeto) => {
+    // console.log(objeto);
+    this.setState((prevState) => ({
+      cart: [...prevState.cart, objeto],
+    }));
+  }
+
   render() {
     const { produtos } = this.state;
     // console.log(produtos);
     return (
       <div>
         {produtos.map((produto) => (
-          <Link
-            key={ produto.id }
-            data-testid="product-detail-link"
-            to={ `/details/${produto.id}` }
-          >
-            <ProductCard
+          <>
+            <Link
               key={ produto.id }
-              thumbnail={ produto.thumbnail }
-              title={ produto.title }
-              id={ produto.id }
-              price={ produto.price }
-            />
-          </Link>
+              data-testid="product-detail-link"
+              to={ `/details/${produto.id}` }
+            >
+              <ProductCard
+                key={ produto.id }
+                thumbnail={ produto.thumbnail }
+                title={ produto.title }
+                id={ produto.id }
+                price={ produto.price }
+              />
+            </Link>
+            <button
+              type="button"
+              onClick={ () => addToCart(produto) }
+              key={ `btn-${produto.id}` }
+              data-testid="product-add-to-cart"
+            >
+              add Cart
+            </button>
+          </>
         ))}
       </div>
     );
