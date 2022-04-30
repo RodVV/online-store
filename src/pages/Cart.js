@@ -41,6 +41,7 @@ class Cart extends Component {
                 +
               </button>
               <p>
+                xablau
                 { quantidade }
               </p>
               <button

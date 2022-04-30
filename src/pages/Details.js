@@ -31,6 +31,7 @@ class Details extends Component {
 
   render() {
     const { produto } = this.state;
+    const { addToCart } = this.props;
     // console.log(produto);
     return (
       <div>
@@ -43,6 +44,13 @@ class Details extends Component {
         <p>{ produto.price }</p>
         <p> Esse produto eh lindo</p>
         <p> Na compra deste produto ganhe uma yogurteira top-therm!!!!</p>
+        <button
+          type="button"
+          onClick={ () => addToCart(produto) }
+          data-testid="product-detail-add-to-cart"
+        >
+          details
+        </button>
       </div>
     );
   }
@@ -54,6 +62,7 @@ Details.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default Details;
