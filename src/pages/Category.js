@@ -55,7 +55,7 @@ export default class Category extends Component {
               onClick={ () => addToCart(produto) }
               data-testid="product-add-to-cart"
             >
-              categoria
+              Adicionar ao Carrinho
             </button>
           </div>
         ))}

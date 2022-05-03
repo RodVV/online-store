@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import List from '../components/List';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import ProductCard from '../components/ProductCard';
-import Cart from './Cart';
 
 export default class Search extends Component {
   constructor() {
@@ -33,7 +32,7 @@ export default class Search extends Component {
   }
 
   render() {
-    const { searchInput, produtos, cart } = this.state;
+    const { searchInput, produtos } = this.state;
     const { addToCart } = this.props;
     // console.log(this.props);
     return (
@@ -63,7 +62,7 @@ export default class Search extends Component {
         <List />
         { produtos.length === 0 && <p>Nenhum produto foi encontrado</p> }
         {produtos.map((produto) => (
-          <div key={ produto.id }>
+          <div key={ produto.id } data-testid="product">
             <Link
               data-testid="product-detail-link"
               to={ `/details/${produto.id}` }
@@ -80,11 +79,8 @@ export default class Search extends Component {
               onClick={ () => addToCart(produto) }
               data-testid="product-add-to-cart"
             >
-              mudei
+              Adicionar ao Carrinho
             </button>
-            <Cart
-              itens={ cart }
-            />
           </div>
         ))}
       </div>
