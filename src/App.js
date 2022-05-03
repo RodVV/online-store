@@ -41,7 +41,7 @@ export default class App extends Component {
     this.setState((prevState) => ({
       cart: [...prevState.cart, objeto],
     }));
-    console.log(cart);
+    // console.log(cart);
     addStorage({ cart });
     // const itemCart = {
     //   ...cart,

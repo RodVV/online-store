@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import ReviewForm from '../components/ReviewForm';
 
 class Details extends Component {
   constructor() {
@@ -34,24 +35,29 @@ class Details extends Component {
     const { addToCart } = this.props;
     // console.log(produto);
     return (
-      <div>
-        <Link to="/cart" data-testid="shopping-cart-button">
-          Carrinho de Compras
-        </Link>
-        Details
-        <h1 data-testid="product-detail-name">{ produto.title }</h1>
-        <img src={ produto.thumbnail } alt={ produto.title } />
-        <p>{ produto.price }</p>
-        <p> Esse produto eh lindo</p>
-        <p> Na compra deste produto ganhe uma yogurteira top-therm!!!!</p>
-        <button
-          type="button"
-          onClick={ () => addToCart(produto) }
-          data-testid="product-detail-add-to-cart"
-        >
-          Adicionar ao Carrinho
-        </button>
-      </div>
+      <>
+        <div>
+          <Link to="/cart" data-testid="shopping-cart-button">
+            Carrinho de Compras
+          </Link>
+          Details
+          <h1 data-testid="product-detail-name">{produto.title}</h1>
+          <img src={produto.thumbnail} alt={produto.title} />
+          <p>{produto.price}</p>
+          <p> Esse produto eh lindo</p>
+          <p> Na compra deste produto ganhe uma yogurteira top-therm!!!!</p>
+          <button
+            type="button"
+            onClick={() => addToCart(produto)}
+            data-testid="product-detail-add-to-cart"
+          >
+            Adicionar ao Carrinho
+          </button>
+        </div>
+        <div>
+          <ReviewForm />
+        </div>
+      </>
     );
   }
 }
