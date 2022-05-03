@@ -62,7 +62,7 @@ export default class Search extends Component {
         <List />
         { produtos.length === 0 && <p>Nenhum produto foi encontrado</p> }
         {produtos.map((produto) => (
-          <div key={ produto.id } data-testid="product">
+          <div key={ produto.id }>
             <Link
               data-testid="product-detail-link"
               to={ `/details/${produto.id}` }
