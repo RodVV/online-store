@@ -42,13 +42,13 @@ class Details extends Component {
           </Link>
           Details
           <h1 data-testid="product-detail-name">{produto.title}</h1>
-          <img src={produto.thumbnail} alt={produto.title} />
+          <img src={ produto.thumbnail } alt={ produto.title } />
           <p>{produto.price}</p>
           <p> Esse produto eh lindo</p>
           <p> Na compra deste produto ganhe uma yogurteira top-therm!!!!</p>
           <button
             type="button"
-            onClick={() => addToCart(produto)}
+            onClick={ () => addToCart(produto) }
             data-testid="product-detail-add-to-cart"
           >
             Adicionar ao Carrinho

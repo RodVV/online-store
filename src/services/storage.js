@@ -6,6 +6,8 @@ export function addStorage(storage) {
   localStorage.setItem('savedCart', JSON.stringify(newSavedCart));
 }
 
+export function getForm() { return JSON.parse(localStorage.getItem('savedForm')); }
+
 export function addForm(storage) {
   // const savedForm = getForm();
   // console.log(getForm());
@@ -13,5 +15,3 @@ export function addForm(storage) {
   const newSavedForm = [...savedForm, storage];
   localStorage.setItem('savedForm', JSON.stringify(newSavedForm));
 }
-
-export function getForm() { return JSON.parse(localStorage.getItem('savedForm')); }

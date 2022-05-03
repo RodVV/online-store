@@ -41,7 +41,12 @@ export default class ReviewForm extends Component {
   };
 
   render() {
-    const { nota, textArea, email, reviews } = this.state;
+    const { textArea, email, reviews } = this.state;
+    const magic1 = 1;
+    const magic2 = 2;
+    const magic3 = 3;
+    const magic4 = 4;
+    const magic5 = 5;
     // console.log(reviews);
     return (
       <>
@@ -57,7 +62,7 @@ export default class ReviewForm extends Component {
                 name="nota"
                 type="radio"
                 id="nota1"
-                onChange={() => this.notaChange(1)}
+                onChange={ () => this.notaChange(magic1) }
                 data-testid="1-rating"
               />
               1
@@ -67,7 +72,7 @@ export default class ReviewForm extends Component {
                 name="nota"
                 type="radio"
                 id="nota2"
-                onChange={() => this.notaChange(2)}
+                onChange={ () => this.notaChange(magic2) }
                 data-testid="2-rating"
               />
               2
@@ -77,7 +82,7 @@ export default class ReviewForm extends Component {
                 name="nota"
                 type="radio"
                 id="nota3"
-                onChange={() => this.notaChange(3)}
+                onChange={ () => this.notaChange(magic3) }
                 data-testid="3-rating"
               />
               3
@@ -87,7 +92,7 @@ export default class ReviewForm extends Component {
                 name="nota"
                 type="radio"
                 id="nota4"
-                onChange={() => this.notaChange(4)}
+                onChange={ () => this.notaChange(magic4) }
                 data-testid="4-rating"
               />
               4
@@ -97,7 +102,7 @@ export default class ReviewForm extends Component {
                 name="nota"
                 type="radio"
                 id="nota5"
-                onChange={() => this.notaChange(5)}
+                onChange={ () => this.notaChange(magic5) }
                 data-testid="5-rating"
               />
               5
@@ -114,8 +119,8 @@ export default class ReviewForm extends Component {
               placeholder="digite aqui seu comentário"
               name="Comment"
               data-testid="product-detail-evaluation"
-              value={textArea}
-              onChange={(e) => this.commentChange(e)}
+              value={ textArea }
+              onChange={ (e) => this.commentChange(e) }
             />
           </label>
           {/*
@@ -126,11 +131,12 @@ export default class ReviewForm extends Component {
               type="email"
               name="email"
               data-testid="product-detail-email"
-              value={email}
-              onChange={(e) => this.emailChange(e)}
+              value={ email }
+              onChange={ (e) => this.emailChange(e) }
             />
           </label>
-          {/*botão submit -> data-testid="submit-review-btn"
+          {/*
+          botão submit -> data-testid="submit-review-btn"
         localStorage
         */}
           <button type="submit" data-testid="submit-review-btn">
@@ -139,10 +145,10 @@ export default class ReviewForm extends Component {
         </form>
         <div>
           {reviews.map((review) => (
-            <div key={review.email}>
+            <div key={ review.email }>
               <p data-testid="product-detail-email">{review.email}</p>
               <br />
-              <p data-testid={`${review.nota}-rating`}>{review.nota}</p>
+              <p data-testid={ `${review.nota}-rating` }>{review.nota}</p>
               <br />
               <p data-testid="product-detail-evaluation">{review.textArea}</p>
               <br />
