@@ -16,3 +16,9 @@ Nesse projeto aprendi:
 * Praticar todas as habilidades desenvolvidas de Front-End
 
 
+Simula uma loja online.
+Para visulizar o projeto:
+  * faca um git-clone do repositorio
+  * dentro da pasta principal, abra o terminal e instale as dependencias com npm install
+  * ainda no terminal, npm start para visualizar no navegador
+
